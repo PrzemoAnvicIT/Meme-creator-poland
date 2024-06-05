@@ -1,0 +1,63 @@
+    {% extends 'base.html' %}
+    {% block content %}
+
+    <div class="form-block">
+      <h1>Wygeneruj swój mem!</h1>
+      <form method="POST" action="{{ url_for('index') }}">
+        <ul class="form-list">
+          <li class="form-list_item">
+            <label for="image-selector">Wybierz mem</label>
+            <select name="image-selector" id="image-selector">
+              <option value="logo.svg" {% if selected_image == 'logo.svg' %}selected{% endif %}>Wybierz mem</option>
+              <option value="meme_1.jpg" {% if selected_image == 'meme_1.jpg' %}selected{% endif %}>Dziewczynka i pożar</option>
+              <option value="meme_2.jpg" {% if selected_image == 'meme_2.jpg' %}selected{% endif %}>Dwa przyciski</option>
+              <!--Zadanie nr 1. Dodaj tutaj nowe memy -->
+
+
+            </select>
+          </li>
+          <li class="form-list_item">
+            <label for="textTop">Wprowadź tekst na górze</label>
+            <input class="input_text" type="text" placeholder="Wprowadź tekst" name="textTop">
+          </li>
+          <li class="form-list_item">
+            <label for="textBottom">Wprowadź tekst na dole</label>
+            <input class="input_text" type="text" placeholder="Wprowadź tekst" name="textBottom">
+          </li>
+          <li class="form-list_item">
+            <label for="color-selector">Kolor tekstu</label>
+            <select name="color-selector" id="color-selector">
+              <option value="white" {% if selected_color == 'white' %}selected{% endif %}>Biały</option>
+              <option value="black" {% if selected_color == 'black' %}selected{% endif %}>Czarny</option>
+              <!--Zadanie dodatkowe nr 1. Dodaj tutaj nowe kolory -->
+
+
+            </select>
+          </li>
+          <li class="form-list_item">
+            <label for="textTop_y">Wprowadź pozycję tekstu na górze na osi Y</label>
+            <input class="input_text" id="textTop_y" type="text" placeholder="Wprowadź pozycję" name="textTop_y">
+          </li>
+          <li class="form-list_item">
+            <label for="textBottom_y">Wprowadź pozycję tekstu na dole na osi Y</label>
+            <input class="input_text" id="textBottom_y" type="text" placeholder="Wprowadź pozycję" name="textBottom_y">
+          </li>
+          <button type="submit">Wybierz</button>
+        </ul>
+      </form>
+    </div>
+    <div class="meme-block" id="memeBlock">
+      
+      <p class="text_top" style="">
+        <!-- Zadanie nr 2. Umieść zmienną z tekstem -->
+      </p>
+
+      <img class="meme" src="{{ url_for('serve_images', path=selected_image) }}" alt="{{ selected_image }}">
+
+      <p class="text_bottom" style="">
+        <!-- Zadanie nr 2. Umieść zmienną z tekstem -->
+      </p>
+    </div>
+
+    {% endblock %}
+
